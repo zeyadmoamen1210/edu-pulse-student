@@ -1,0 +1,255 @@
+@import "_bootstrap.scss";
+@import "_color.scss";
+
+.el-aside {
+
+
+
+    .aside {
+        height: 100vh;
+        background: #FFFFFF;
+        position: fixed;
+        bottom: 0;
+        top: 0;
+
+    }
+
+    .return {
+        margin: 0 30px;
+        color: $textColor;
+        cursor: pointer;
+
+        span {
+            margin: 0 10px;
+        }
+    }
+
+    .img {
+        width: 77px;
+        height: 77px;
+        border: 1px solid $mainColor;
+        margin: 2.5rem auto 0.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    p {
+        &.name {
+            font-size: 14px;
+            color: $textColor;
+            text-align: center !important;
+        }
+    }
+
+    .el-avatar--large {
+        /* width: 40px; */
+        /* height: 40px; */
+        line-height: 40px;
+        width: 67px;
+        height: 67px;
+        margin: 0 auto;
+    }
+
+    .el-avatar>img {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    .list {
+        display: flex;
+        margin: 0 0.5rem 1.5rem;
+        width: 240px;
+        height: 40px;
+        padding: 0 2.8rem;
+
+        &.logout {
+            // margin-top: 20rem;
+            position: absolute;
+            bottom: 10px;
+
+            p {
+                color: $textColor !important;
+            }
+
+            .fa-sign-out-alt {
+                color: $textColor !important;
+            }
+
+        }
+
+        align-items: center;
+
+        &.first {
+            margin: 2rem 0.5rem 1.5rem;
+
+        }
+
+        a {
+            color: $textColor !important;
+            text-decoration: none !important;
+            display: flex;
+        }
+
+        &.active {
+            background: #FFF3EA;
+            border-radius: 6px;
+
+
+            a {
+                color: $mainColor !important;
+                text-decoration: none !important;
+                display: flex;
+            }
+        }
+
+        font-size: 18px;
+        font-weight: 300 !important;
+
+        span {
+            margin: 0 0.4rem;
+
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.vs-sidebar {
+    z-index: 10000000000000000 !important;
+}
+
+.vs-sidebar-content {
+
+    z-index: 10000000000000000 !important;
+
+    .vs-sidebar__item__icon {
+        color: $textColor !important;
+        font-size: 16px;
+        background: transparent !important;
+    }
+
+    .el-avatar {
+        margin: 2rem auto;
+    }
+
+    border-radius: 0px 0px 0px 0px !important;
+
+    .logout {
+        margin-top: 10rem;
+
+        p {
+            color: $textColor !important;
+        }
+    }
+
+    .img {
+        width: 77px;
+        height: 77px;
+        border: 1px solid $mainColor;
+        margin: 2.5rem auto 0.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .el-avatar {
+        width: 67px;
+        height: 67px;
+    }
+
+    &.reduce {
+        .el-avatar {
+            width: 30px;
+            height: 30px;
+        }
+
+        .img {
+            width: 30px;
+            height: 30px;
+            border: none;
+
+        }
+
+        .vs-sidebar__item.hasIcon {
+            width: 240px;
+            height: 40px;
+            padding: 0 1rem;
+            margin: 0 0rem 1rem;
+
+
+        }
+    }
+
+    .vs-sidebar__item.hasIcon {
+        width: 240px;
+        height: 40px;
+        padding: 0 2.4rem;
+        margin: 0 0.5rem 1rem;
+
+
+    }
+
+    .active {
+
+        background: #FFF3EA;
+        border-radius: 6px;
+
+    }
+
+    .vs-sidebar__item {
+        &::after {
+            display: none;
+        }
+
+        color: $textColor;
+        font-size: 16px;
+    }
+
+    .vs-sidebar__item__icon {
+        color: $textColor;
+        font-size: 16px;
+        background: transparent !important;
+
+
+    }
+
+}
+
+
+
+
+.vs-sidebar-content.reduce .vs-sidebar__item.hasIcon .vs-sidebar__item__text {
+    -webkit-transform: translate(-10px);
+    transform: translate(-71px);
+    margin-left: -50px;
+}
+
+.arabic {
+    position: absolute;
+    bottom: 10px;
+    right: 48%;
+}
+
+.eng {
+    position: absolute;
+    bottom: 10px;
+    left: 42%;
+}
+
+.arabicSmall {
+    position: absolute;
+    bottom: 10px;
+    right: 11px;
+}
+
+.engSmall {
+    position: absolute;
+    bottom: 10px;
+    left: 11px;
+}

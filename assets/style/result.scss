@@ -1,0 +1,132 @@
+@import "_bootstrap.scss";
+@import "_color.scss";
+
+.result {
+    background: #F8F8F8;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    .el-main {
+        @media screen and (max-width:600px) {
+
+            padding: 20px 0px !important;
+        }
+
+    }
+
+
+    h3 {
+        font-size: 20px;
+        color: $textColor;
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 25px;
+            margin: 0 13px;
+        }
+
+        &.parent {
+
+            color: $mainColor;
+
+        }
+    }
+
+    .bg-result {
+        background-color: #ffffff;
+        min-height: 116px;
+        box-shadow: 0 0 3px #dddddd;
+        margin: 24.5px 0;
+        padding: 13px 30px 13px 30px;
+
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 2px;
+
+            &.markInPercentage {
+                font-size: 14px;
+                font-weight: normal;
+            }
+
+        }
+
+        .align {
+            align-items: center;
+
+        }
+
+        .justify {
+            display: flex;
+            align-items: center;
+            margin-top: 2px;
+            justify-content: center;
+        }
+    }
+
+    .el-progress-circle {
+        height: 91px !important;
+        width: 91px !important;
+        // padding: 0 20px;
+
+    }
+
+    .tabs {
+        margin: 0.5rem 2rem;
+
+        @media screen and (max-width:500px) {
+            margin: 0.5rem 0;
+        }
+
+        .nav-tabs {
+            border: none;
+
+
+
+        }
+
+        .nav-link {
+            background: transparent;
+
+            // width: 90px;
+
+
+
+            margin: 0 0.5rem;
+            font-size: 20px !important;
+
+            font-weight: normal;
+            color: $textColor !important;
+            border: none;
+            text-align: center !important;
+
+            @media screen and (max-width:385px) {
+                font-size: 12px !important;
+                width: 73px !important;
+                margin: 0 !important;
+                padding: 0;
+            }
+
+            @media screen and (max-width:312px) {
+                font-size: 10px !important;
+                width: 60px !important;
+                margin: 0 !important;
+                padding: 0;
+            }
+
+
+            &.active {
+                border-bottom: 2px solid $mainColor;
+            }
+
+
+        }
+    }
+
+}

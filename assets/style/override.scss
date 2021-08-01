@@ -1,0 +1,181 @@
+@import "_color.scss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap');
+
+html {
+    -webkit-font-smoothing: antialiased;
+
+    --scrollbarBG: #ffff;
+    --thumbBG: #545185;
+}
+
+body::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 6px;
+}
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+
+    border-radius: 6px;
+    // border: 3px solid var(--scrollbarBG);
+}
+
+a {
+    text-decoration: none;
+    color: $textColor;
+
+    &:hover {
+        color: $textColor;
+    }
+}
+
+.el-main {
+    overflow-x: hidden;
+}
+
+.first-btn {
+    width: 100%;
+    font-size: 24px;
+    display: flex;
+    height: 53px;
+    font-family: "STV";
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    background: #F28227 !important;
+    border: none;
+    font-weight: bold;
+
+    a {
+        color: #FFF !important;
+        font-size: 24px !important;
+    }
+
+    &:hover {
+        background: #F28227 !important;
+    }
+}
+
+.el-button--primary:active {
+    background: #F28227 !important;
+}
+
+* {
+    text-align: start;
+
+
+}
+
+.arabicFont {
+    font-family: "STV" !important;
+}
+
+.engFont {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.el-form-item__error {
+    display: block;
+    width: 100%;
+}
+
+.el-col {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &.float {
+        float: right;
+    }
+}
+
+.mr-auto {
+    margin-right: auto !important;
+}
+
+.ml-auto {
+    margin-left: auto !important;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-sm-3 {
+    @media screen and(max-width:600px) {
+        margin-top: 1rem !important;
+    }
+}
+
+.leftDirection {
+    direction: ltr;
+}
+
+.langBtn {
+    background: none;
+    border: none;
+    color: $textColor;
+
+}
+
+.rotateEng {
+    transform: rotate(180deg);
+}
+
+.vs-notification.vs-notification--color:not(.vs-notification--flat) {
+    color: $mainColor !important;
+}
+
+.vs-notification.vs-notification--color:not(.vs-notification--flat) .vs-notification__close {
+    --vs-color: 242, 130, 39 !important;
+}
+
+.el-avatar>img {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.el-scrollbar__wrap {
+    /* overflow: scroll; */
+    height: 100%;
+    overflow: hidden;
+    padding: 0 0 19px;
+}
+
+.bg-white {
+    min-height: 600px;
+    background: #ffffff !important;
+    margin: 0 1rem;
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem 0;
+
+    @media screen and (max-width:600px) {
+        padding: 2.5rem 1rem 0;
+    }
+
+    @media screen and (max-width:290px) {
+
+        padding: 2.5rem 5px 0;
+    }
+
+}

@@ -1,0 +1,26 @@
+{
+  "Aside": {
+    "description": "Auto imported from components/aside.vue"
+  },
+  "AsideSmallScreen": {
+    "description": "Auto imported from components/asideSmallScreen.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "ParentAside": {
+    "description": "Auto imported from components/parentAside.vue"
+  },
+  "ParentSmallSide": {
+    "description": "Auto imported from components/parentSmallSide.vue"
+  },
+  "Question": {
+    "description": "Auto imported from components/question.vue"
+  },
+  "SecondParentAside": {
+    "description": "Auto imported from components/secondParentAside.vue"
+  },
+  "SecondSmallParentAside": {
+    "description": "Auto imported from components/secondSmallParentAside.vue"
+  }
+}

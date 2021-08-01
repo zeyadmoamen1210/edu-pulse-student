@@ -1,0 +1,115 @@
+@import "_bootstrap.scss";
+@import "_color.scss";
+
+.student {
+    background: #F8F8F8;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    .el-main {
+        @media screen and (max-width:600px) {
+
+            padding: 20px 0px !important;
+        }
+
+    }
+
+    .form-control:disabled,
+    .form-control[readonly] {
+        background-color: #FAFBFC !important;
+    }
+
+    .bg-white {
+        min-height: 600px;
+        background: #ffffff !important;
+        margin: 0 1rem;
+        border-radius: 12px;
+        padding: 2.5rem 1.5rem 0;
+
+        @media screen and (max-width:600px) {
+            padding: 2.5rem 1rem 0;
+        }
+
+        @media screen and (max-width:290px) {
+
+            padding: 2.5rem 5px 0;
+        }
+
+
+        h3 {
+            font-size: 20px;
+            color: $mainColor;
+            font-size: 24px;
+
+            span {
+                font-size: 17px;
+                margin: 0 9px;
+            }
+        }
+
+        .el-table--enable-row-hover .el-table__body tr:hover>td {
+            background: transparent !important;
+        }
+
+        .el-table {
+            margin: 8px 0;
+
+            thead {
+                tr {
+                    th {
+                        background-color: #FCFCFC !important;
+
+                        .cell {
+                            text-align: center;
+                            color: $subTextColor;
+                            font-size: 16px;
+                            font-family: "cairo";
+                            font-weight: normal;
+                        }
+
+                        &.is-leaf {
+                            border: none;
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    &:hover {}
+
+                    td {
+
+
+                        .cell {
+                            text-align: center;
+                            font-family: "cairo";
+                            color: #707070;
+                            font-weight: 500;
+
+
+                            .btn {
+                                background-color: #F6F6FC;
+                                // width: 140px;
+                                color: $subTextColor;
+                                font-size: 12px;
+                                font-family: "cairo";
+                                border-radius: 4px;
+                                font-weight: normal;
+                                margin-bottom: 0;
+
+                                span {
+                                    font-size: 10px;
+                                    margin: 0 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
