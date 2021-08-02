@@ -107,8 +107,8 @@
                       &&
                       !repeatTheExam
                     "
-                    class="col-lg-1"
-                    :class="[$i18n.locale === 'en' ? 'eng' : '']"
+                    class="col-md-1"
+                    :class="[$i18n.locale === 'en' ? '' : '']"
                   >
                     <div class="mt-2 scroll">
                       <div
@@ -123,7 +123,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-11">
+                  <div class="col-md-11">
                     <section>
                       
 
@@ -131,7 +131,7 @@
                         <vs-button
                           v-if="isCorrected && showModelAnswer"
                           @click="showModelAnswer = false"
-                          >عرض نتيجة الامتحان</vs-button
+                          >  {{$i18n.locale == 'ar' ? 'عرض نتيجة الامتحان' : 'Show Your Mark'}} </vs-button
                         >
                         <div v-if="questions.length > 0 && !teacherWillCorrectIt && !repeatTheExam">
                           <Question

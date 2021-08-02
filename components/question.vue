@@ -2,7 +2,7 @@
   <div class="question">
 
     <div class="showQuestionMark" >
-          <span>الدرجة:</span> {{question.mark}} / {{question.point}}
+          <span>{{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree:'}}</span> {{question.mark}} / {{question.point}}
         </div>
 
 
@@ -42,11 +42,11 @@
               )
             "
           >
-            <h6 style="color: var(--yellow)">إجابتك :</h6>
+            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
             <p>
               {{ question.answer }}
             </p>
-            <h6 style="color: var(--yellow)">الإجابة النموذجية</h6>
+            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
 
             <p>
               {{ question.question.modelAnswer }}
@@ -84,11 +84,11 @@
               )
             "
           >
-            <h6 style="color: var(--yellow)">إجابتك :</h6>
+            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
             <p>
               {{ question.answer }}
             </p>
-            <h6 style="color: var(--yellow)">الإجابة النموذجية</h6>
+            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
 
             <p>
               {{ question.question.modelAnswer }}
@@ -96,7 +96,7 @@
           </div>
           <div v-else>
 
-            <h6 style="color: var(--yellow)">إجابتك :</h6>
+            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
             <p>
               {{ question.answer }}
             </p>
@@ -135,14 +135,14 @@
         <div v-else>
               <div
             >
-              <h6 style="color: var(--yellow)">إجابتك :</h6>
+              <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
               <p
                 v-for="(x, i) in question.question.numberOfInputs"
                 :key="i"
               >
                 {{ question.answer[i] }}
               </p>
-              <h6 style="color: var(--yellow)">الإجابة النموذجية</h6>
+              <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
 
               <p
                 v-for="(x, i) in question.question.numberOfInputs"
@@ -187,9 +187,9 @@
         >
           <div>
             <h6>
-              الإجابة الصحيحة :
-              <span v-if="question.question.modelAnswer"> صح </span>
-              <span v-else> خطأ </span>
+              {{$i18n.locale == 'ar' ? 'الإجابة الصحيحة :' : 'The Right Answer'}}
+              <span v-if="question.question.modelAnswer"> {{$i18n.locale == 'ar' ? 'صح' : 'True'}} </span>
+              <span v-else> {{$i18n.locale == 'ar' ? 'خطأ' : 'False'}} </span>
             </h6>
           </div>
           <div class="row">
@@ -276,7 +276,7 @@
 
 
              <div class="showQuestionMark" >
-          <span>الدرجة:</span> {{child.mark}} / {{child.point}}
+          <span> {{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree:'}} </span> {{child.mark}} / {{child.point}}
         </div>
 
 
@@ -300,11 +300,11 @@
                   )
                 "
               >
-                <h6 style="color: var(--yellow)">إجابتك :</h6>
+                <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Answer'}}</h6>
                 <p>
                   {{ child.answer }}
                 </p>
-                <h6 style="color: var(--yellow)">الإجابة النموذجية</h6>
+                <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
 
                 <p>
                   {{ child.child.modelAnswer }}
@@ -327,7 +327,7 @@
           <div v-if="child.child.type == 'voice'">
 
             <div class="showQuestionMark" >
-          <span>الدرجة:</span> {{child.mark}} / {{child.point}}
+          <span>{{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree:'}}</span> {{child.mark}} / {{child.point}}
         </div>
 
 
@@ -355,11 +355,11 @@
                   )
                 "
               >
-                <h6 style="color: var(--yellow)">إجابتك :</h6>
+                <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Answer'}}</h6>
                 <p>
                   {{ child.answer }}
                 </p>
-                <h6 style="color: var(--yellow)">الإجابة النموذجية</h6>
+                  <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
 
                 <p>
                   {{ child.child.modelAnswer }}
@@ -367,7 +367,7 @@
               </div>
               <div v-else>
 
-                <h6 style="color: var(--yellow)">إجابتك :</h6>
+               <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Answer'}}</h6>
                 <p>
                   {{ child.answer }}
                 </p>
@@ -412,7 +412,7 @@
           >
 
           <div class="showQuestionMark" >
-          <span>الدرجة:</span> {{child.mark}} / {{child.point}}
+          <span>{{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree: '}}</span> {{child.mark}} / {{child.point}}
         </div>
 
 
@@ -443,9 +443,9 @@
             >
               <div>
                 <h6>
-                  الإجابة الصحيحة :
-                  <span v-if="child.child.modelAnswer"> صح </span>
-                  <span v-else> خطأ </span>
+                  {{$i18n.locale == 'ar' ? 'الإجابة الصحيحة:' : 'The Right Answer: '}}
+                  <span v-if="child.child.modelAnswer">  {{$i18n.locale == 'ar' ? 'صح' : 'True'}} </span>
+                  <span v-else>  {{$i18n.locale == 'ar' ? 'خطأ' : 'False'}} </span>
                 </h6>
               </div>
               <div class="row">
@@ -466,7 +466,7 @@
           >
 
           <div class="showQuestionMark" >
-          <span>الدرجة:</span> {{child.mark}} / {{child.point}}
+          <span> {{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree: '}} </span> {{child.mark}} / {{child.point}}
         </div>
 
 
