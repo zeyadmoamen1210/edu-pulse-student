@@ -3,126 +3,108 @@
     "name": "login",
     "path": "/login",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_42c116f4"
+    "chunkName": "pages/login"
   },
   {
     "name": "parentProfile",
     "path": "/parentProfile",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\parentProfile.vue",
-    "chunkName": "pages/parentProfile",
-    "_name": "_71e98abc"
+    "chunkName": "pages/parentProfile"
   },
   {
     "name": "profile",
     "path": "/profile",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_a07d7cf4"
+    "chunkName": "pages/profile"
   },
   {
     "name": "Tasks",
     "path": "/Tasks",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Tasks\\\\index.vue",
-    "chunkName": "pages/Tasks/index",
-    "_name": "_353cfc17"
+    "chunkName": "pages/Tasks/index"
   },
   {
     "name": "Auth-changePass",
     "path": "/Auth/changePass",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Auth\\\\changePass.vue",
-    "chunkName": "pages/Auth/changePass",
-    "_name": "_e85371c8"
+    "chunkName": "pages/Auth/changePass"
   },
   {
     "name": "Auth-code",
     "path": "/Auth/code",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Auth\\\\code.vue",
-    "chunkName": "pages/Auth/code",
-    "_name": "_417bd168"
+    "chunkName": "pages/Auth/code"
   },
   {
     "name": "Auth-sendEmail",
     "path": "/Auth/sendEmail",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Auth\\\\sendEmail.vue",
-    "chunkName": "pages/Auth/sendEmail",
-    "_name": "_5091dfee"
+    "chunkName": "pages/Auth/sendEmail"
   },
   {
     "name": "Material-material",
     "path": "/Material/material",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Material\\\\material.vue",
-    "chunkName": "pages/Material/material",
-    "_name": "_a1d9cc3e"
+    "chunkName": "pages/Material/material"
   },
   {
     "name": "Parent-student",
     "path": "/Parent/student",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Parent\\\\student.vue",
-    "chunkName": "pages/Parent/student",
-    "_name": "_3e02740e"
+    "chunkName": "pages/Parent/student"
   },
   {
     "name": "Material-content-course-id",
     "path": "/Material/content/course/:id?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Material\\\\content\\\\course\\\\_id.vue",
-    "chunkName": "pages/Material/content/course/_id",
-    "_name": "_58bff440"
+    "chunkName": "pages/Material/content/course/_id"
   },
   {
     "name": "Material-content-unitExam-unit-id",
     "path": "/Material/content/unitExam/:unit?/:id?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Material\\\\content\\\\unitExam\\\\_unit\\\\_id.vue",
-    "chunkName": "pages/Material/content/unitExam/_unit/_id",
-    "_name": "_174ac869"
+    "chunkName": "pages/Material/content/unitExam/_unit/_id"
   },
   {
     "name": "Parent-Subjects-lessons-user-section-id",
     "path": "/Parent/Subjects/lessons/:user?/:section?/:id?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Parent\\\\Subjects\\\\lessons\\\\_user\\\\_section\\\\_id.vue",
-    "chunkName": "pages/Parent/Subjects/lessons/_user/_section/_id",
-    "_name": "_e675751e"
+    "chunkName": "pages/Parent/Subjects/lessons/_user/_section/_id"
   },
   {
     "name": "Material-content-id",
     "path": "/Material/content/:id?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Material\\\\content\\\\_id.vue",
-    "chunkName": "pages/Material/content/_id",
-    "_name": "_59fccc1b"
+    "chunkName": "pages/Material/content/_id"
   },
   {
     "name": "Parent-Result-id-section",
     "path": "/Parent/Result/:id?/:section?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Parent\\\\Result\\\\_id\\\\_section.vue",
-    "chunkName": "pages/Parent/Result/_id/_section",
-    "_name": "_0e0008d4"
+    "chunkName": "pages/Parent/Result/_id/_section"
   },
   {
     "name": "Parent-Subjects-id-section",
     "path": "/Parent/Subjects/:id?/:section?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Parent\\\\Subjects\\\\_id\\\\_section.vue",
-    "chunkName": "pages/Parent/Subjects/_id/_section",
-    "_name": "_77d9e3ec"
+    "chunkName": "pages/Parent/Subjects/_id/_section"
   },
   {
     "name": "Parent-tasks-id-section",
     "path": "/Parent/tasks/:id?/:section?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Parent\\\\tasks\\\\_id\\\\_section.vue",
-    "chunkName": "pages/Parent/tasks/_id/_section",
-    "_name": "_43552a4f"
+    "chunkName": "pages/Parent/tasks/_id/_section"
   },
   {
     "name": "exam-id",
     "path": "/exam/:id?",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\exam\\\\_id.vue",
-    "chunkName": "pages/exam/_id",
-    "_name": "_5d1e5b18"
+    "chunkName": "pages/exam/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_14f7d16f"
+    "chunkName": "pages/index"
   }
 ]

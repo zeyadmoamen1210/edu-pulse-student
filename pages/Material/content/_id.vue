@@ -159,8 +159,9 @@
                               <h6 class="text-center"> {{exam.title}} </h6>
                               <h6 class="text-center"> {{exam.points}} </h6>
 
-                              <h6 class="text-center examAllow" v-if="exam.isAllowed && !exam.isChecking"> متاح </h6>
-                              <h6 class="text-center examChecking" v-if="!exam.isPassed && exam.isChecking"> بيتم تصحيحة من المعلم </h6>
+                              <h6 class="text-center examAllow" v-if="exam.isAllowed && !exam.isChecking"> {{ $i18n.locale == 'ar' ? 'متاح' : 'Allow' }} </h6>
+                              <h6 class="text-center examChecking" v-if="!exam.isPassed && exam.isChecking"> {{$i18n.locale == 'ar' ? 'بيتم تصحيحة من المعلم' : 'ًTeacher Will Correct It'}}  </h6>
+                              <h6 class="text-center examPassed" v-if="exam.isPassed && exam.lastScore >= 0"> {{$i18n.locale == 'ar' ? 'درجتك :' : 'Degree :'}} {{exam.lastScore}} </h6>
                           </div>
                         </div>
                     </div>
@@ -310,6 +311,7 @@ export default {
     padding:10px;
     cursor: pointer;
     margin-bottom: 15px;
+     min-height: 180px;
     h6{
       :first-of-type{
         font-size: 20px;
