@@ -180,7 +180,7 @@ export default {
             "TotalScore": "Total Score",
             "ExamNote": "   You can repeat the exam or find out the wrong questions ",
             "RepeatExam": "Repeat Exam ",
-            "WrongAnswer": "Find out the wrong questions",
+            "WrongAnswer": "Show Your Solutions And The ModelAnswer",
             "Reply": "Reply",
             "choose": "choose the true answer",
             "complete": "Complete here",
@@ -205,6 +205,8 @@ export default {
 
             "Cancel": "cancel",
             "Live": "Live ",
+            'NotPassed': 'You Not Passed The Required Percentage In This Exam',
+            "NoQuestionInExam": "No Questions In This Exam",
 
               "isCheckingByTeacher": "This Exam Is Checking By Your Teacher We Will Your Mark Will Be Displayed After Revision",
 
@@ -214,6 +216,8 @@ export default {
         },
         ar: {
           auth: {
+            "NoQuestionInExam": "لا توجد أسئلة في الامتحان",
+            'NotPassed': 'لم تتجاوز النسبة المطلوبة للامتحان',
             "notAllowedToSolve":"انتهي وقت هذا الامتحان",
             "examPoints": "الدرجة",
             "Login": "تسجيل الدخول",
@@ -272,7 +276,7 @@ export default {
             "TotalScore": "مجموع درجاتك",
             "ExamNote": "يمكنك إعادة الاختبار او معرفة الأسئلة الخطأ",
             "RepeatExam": "إعادة الاختبار",
-            "WrongAnswer": "معرفة الأسئلة الخطأ",
+            "WrongAnswer": "معرفة إجابتك و الإجابات النموذجية",
             "Reply": "رد",
             "choose": "اختر الاجابه الصح",
             "complete": "اكمل هنا ",

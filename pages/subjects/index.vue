@@ -166,12 +166,7 @@ export default {
     },
     goTo(subject) {
       console.log();
-      this.$router.push({
-        name: "Material-content-id",
-        params: {
-          id: subject.id,
-        },
-      });
+      this.$router.push(`/subjects/${subject.id}`);
     },
   },
 };

@@ -591,13 +591,33 @@ export default {
         .get(`/lessons/${this.$route.params.id}/material?type=video`)
         .then((res) => {
           this.videos = res.data.docs;
+          this.handleYoutubeAndVimeo();
           console.log("videos", this.videos);
           this.video = this.videos[this.i].link;
           this.videoTitle = this.videos[this.i].title;
           this.videoId = this.videos[this.i].id;
+
           this.getComments();
         })
         .finally(() => loading.close());
+    },
+    handleYoutubeAndVimeo() {
+      this.videos.map((ele) => {
+        if (ele.link.includes("youtube.com")) {
+          ele.link = ele.link.replace("watch?v=", "embed/");
+          if (ele.link.includes("&")) {
+            let index = ele.link.indexOf("&");
+            ele.link = ele.link.substring(0, index);
+          }
+        } else if (
+          ele.link.includes("vimeo.com") &&
+          !ele.link.includes("player")
+        ) {
+          ele.link = ele.link.replace("vimeo.com/", "player.vimeo.com/video/");
+        }
+
+        console.log(ele.link);
+      });
     },
     getComments() {
       this.$axios

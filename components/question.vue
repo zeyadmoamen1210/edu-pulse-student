@@ -1,10 +1,9 @@
 <template>
   <div class="question">
-
-    <div class="showQuestionMark" >
-          <span>{{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree:'}}</span> {{question.mark}} / {{question.point}}
-        </div>
-
+    <div class="showQuestionMark">
+      <span>{{ $i18n.locale == "ar" ? "الدرجة:" : "Degree:" }}</span>
+      {{ question.mark }} / {{ question.point }}
+    </div>
 
     <div>
       <div class="container-fluid">
@@ -17,11 +16,9 @@
           </div>
         </div>
       </div>
+
       <!--paragraph-->
       <div v-if="question.question.type == 'paragraph'">
-
-       
-
         <p class="orangeColor">{{ $t("auth.answerHere") }}</p>
         <textarea
           v-if="!showModelAnswer"
@@ -42,11 +39,25 @@
               )
             "
           >
-            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
+            <h6 style="color: var(--yellow)">
+              {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Solution" }}
+            </h6>
             <p>
               {{ question.answer }}
             </p>
-            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
+
+             <div v-if="question.answerImage" class="uploader mt-1 mb-2">
+              <div >
+                <img :src="question.answerImage" style="max-width: 100%; max-height: 100%" alt="">
+              </div>
+            </div>
+
+
+            <h6 style="color: var(--yellow)">
+              {{
+                $i18n.locale == "ar" ? "الإجابة النموذجية :" : "Model Answer"
+              }}
+            </h6>
 
             <p>
               {{ question.question.modelAnswer }}
@@ -84,24 +95,48 @@
               )
             "
           >
-            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
+            <h6 style="color: var(--yellow)">
+              {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Solution" }}
+            </h6>
             <p>
               {{ question.answer }}
             </p>
-            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
+
+            <div class="uploader mt-1 mb-2" v-if="question.answerImage">
+              <div >
+                <img :src="question.answerImage" style="max-width: 100%; max-height: 100%" alt="">
+              </div>
+            </div>
+
+            <h6 style="color: var(--yellow)">
+              {{
+                $i18n.locale == "ar" ? "الإجابة النموذجية :" : "Model Answer"
+              }}
+            </h6>
 
             <p>
               {{ question.question.modelAnswer }}
             </p>
           </div>
           <div v-else>
-
-            <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
+            <h6 style="color: var(--yellow)">
+              {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Solution" }}
+            </h6>
             <p>
               {{ question.answer }}
             </p>
 
+            <div class="uploader mt-1 mb-2" v-if="question.answerImage">
+              <div >
+                <img :src="question.answerImage" style="max-width: 100%; max-height: 100%" alt="">
+              </div>
+            </div>
 
+            <h6 style="color: var(--yellow)">
+              {{
+                $i18n.locale == "ar" ? "الإجابة النموذجية :" : "Model Answer"
+              }}
+            </h6>
             <img :src="question.question.modelAnswer" alt="" />
           </div>
         </div>
@@ -118,42 +153,41 @@
             class="col-md-6"
             v-for="(x, i) in question.question.numberOfInputs"
             :key="i"
-             
           >
             <input
-             
               class="form-control"
               v-model="question.answer[i]"
               @blur="postSolution"
             />
-
           </div>
-
         </div>
-
 
         <div v-else>
-              <div
-            >
-              <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Solution'}} </h6>
-              <p
-                v-for="(x, i) in question.question.numberOfInputs"
-                :key="i"
-              >
-                {{ question.answer[i] }}
-              </p>
-              <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
+          <div>
+            <h6 style="color: var(--yellow)">
+              {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Solution" }}
+            </h6>
+            <p v-for="(x, i) in question.question.numberOfInputs" :key="i">
+              {{ question.answer[i] }}
+            </p>
 
-              <p
-                v-for="(x, i) in question.question.numberOfInputs"
-                :key="i"
-              >
-                {{ question.question.modelAnswer[i] }}
-              </p>
+            <div class="uploader mt-1 mb-2" v-if="question.answerImage">
+              <div >
+                <img :src="question.answerImage" style="max-width: 100%; max-height: 100%" alt="">
+              </div>
             </div>
 
-        </div>
+            <h6 style="color: var(--yellow)">
+              {{
+                $i18n.locale == "ar" ? "الإجابة النموذجية :" : "Model Answer"
+              }}
+            </h6>
 
+            <p v-for="(x, i) in question.question.numberOfInputs" :key="i">
+              {{ question.question.modelAnswer[i] }}
+            </p>
+          </div>
+        </div>
       </div>
       <!--true and false-->
       <div
@@ -187,9 +221,13 @@
         >
           <div>
             <h6>
-              {{$i18n.locale == 'ar' ? 'الإجابة الصحيحة :' : 'The Right Answer'}}
-              <span v-if="question.question.modelAnswer"> {{$i18n.locale == 'ar' ? 'صح' : 'True'}} </span>
-              <span v-else> {{$i18n.locale == 'ar' ? 'خطأ' : 'False'}} </span>
+              {{
+                $i18n.locale == "ar" ? "الإجابة الصحيحة :" : "The Right Answer"
+              }}
+              <span v-if="question.question.modelAnswer">
+                {{ $i18n.locale == "ar" ? "صح" : "True" }}
+              </span>
+              <span v-else> {{ $i18n.locale == "ar" ? "خطأ" : "False" }} </span>
             </h6>
           </div>
           <div class="row">
@@ -268,17 +306,12 @@
 
       <div v-if="question.question.type == 'group'">
         <section v-for="child in question.childrenQuestions" :key="child.id">
-
-          
-
           <!--paragraph-->
           <div v-if="child.child.type == 'paragraph'">
-
-
-             <div class="showQuestionMark" >
-          <span> {{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree:'}} </span> {{child.mark}} / {{child.point}}
-        </div>
-
+            <div class="showQuestionMark">
+              <span> {{ $i18n.locale == "ar" ? "الدرجة:" : "Degree:" }} </span>
+              {{ child.mark }} / {{ child.point }}
+            </div>
 
             <p class="orangeColor">{{ child.child.head }}</p>
             <textarea
@@ -300,23 +333,39 @@
                   )
                 "
               >
-                <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Answer'}}</h6>
+                <h6 style="color: var(--yellow)">
+                  {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Answer" }}
+                </h6>
                 <p>
                   {{ child.answer }}
                 </p>
-                <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
+
+                <div class="uploader mt-1 mb-2" v-if="question.answerImage">
+              <div >
+                <img :src="question.answerImage" style="max-width: 100%; max-height: 100%" alt="">
+              </div>
+            </div>
+
+
+                <h6 style="color: var(--yellow)">
+                  {{
+                    $i18n.locale == "ar"
+                      ? "الإجابة النموذجية :"
+                      : "Model Answer"
+                  }}
+                </h6>
 
                 <p>
                   {{ child.child.modelAnswer }}
                 </p>
               </div>
               <div v-else>
-
                 <h6 style="color: var(--yellow)">إجابتك :</h6>
                 <p>
                   {{ child.answer }}
                 </p>
 
+                
 
                 <img :src="child.child.modelAnswer" alt="" />
               </div>
@@ -325,11 +374,10 @@
 
           <!--voice-->
           <div v-if="child.child.type == 'voice'">
-
-            <div class="showQuestionMark" >
-          <span>{{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree:'}}</span> {{child.mark}} / {{child.point}}
-        </div>
-
+            <div class="showQuestionMark">
+              <span>{{ $i18n.locale == "ar" ? "الدرجة:" : "Degree:" }}</span>
+              {{ child.mark }} / {{ child.point }}
+            </div>
 
             <audio controls :src="child.child.attachment">
               Your browser does not support the audio element.
@@ -355,23 +403,32 @@
                   )
                 "
               >
-                <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Answer'}}</h6>
+                <h6 style="color: var(--yellow)">
+                  {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Answer" }}
+                </h6>
                 <p>
                   {{ child.answer }}
                 </p>
-                  <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'الإجابة النموذجية :' : 'Model Answer'}}</h6>
+                <h6 style="color: var(--yellow)">
+                  {{
+                    $i18n.locale == "ar"
+                      ? "الإجابة النموذجية :"
+                      : "Model Answer"
+                  }}
+                </h6>
 
                 <p>
                   {{ child.child.modelAnswer }}
                 </p>
               </div>
               <div v-else>
-
-               <h6 style="color: var(--yellow)"> {{$i18n.locale == 'ar' ? 'إجابتك :' : 'Your Answer'}}</h6>
+                <h6 style="color: var(--yellow)">
+                  {{ $i18n.locale == "ar" ? "إجابتك :" : "Your Answer" }}
+                </h6>
                 <p>
                   {{ child.answer }}
                 </p>
-                
+
                 <img :src="child.child.modelAnswer" alt="" />
               </div>
             </div>
@@ -382,11 +439,9 @@
             class="container-fluid p-0"
             v-else-if="child.child.type == 'complete'"
           >
-
-          <div class="showQuestionMark" >
-          <span>الدرجة:</span> {{child.mark}} / {{child.point}}
-        </div>
-
+            <div class="showQuestionMark">
+              <span>الدرجة:</span> {{ child.mark }} / {{ child.point }}
+            </div>
 
             <p class="orangeColor">{{ child.child.head }}</p>
             <div class="row">
@@ -410,11 +465,10 @@
             class="radio container-fluid p-0"
             v-else-if="child.child.type == 'truefalse'"
           >
-
-          <div class="showQuestionMark" >
-          <span>{{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree: '}}</span> {{child.mark}} / {{child.point}}
-        </div>
-
+            <div class="showQuestionMark">
+              <span>{{ $i18n.locale == "ar" ? "الدرجة:" : "Degree: " }}</span>
+              {{ child.mark }} / {{ child.point }}
+            </div>
 
             <p class="orangeColor">{{ child.child.head }}</p>
 
@@ -443,9 +497,17 @@
             >
               <div>
                 <h6>
-                  {{$i18n.locale == 'ar' ? 'الإجابة الصحيحة:' : 'The Right Answer: '}}
-                  <span v-if="child.child.modelAnswer">  {{$i18n.locale == 'ar' ? 'صح' : 'True'}} </span>
-                  <span v-else>  {{$i18n.locale == 'ar' ? 'خطأ' : 'False'}} </span>
+                  {{
+                    $i18n.locale == "ar"
+                      ? "الإجابة الصحيحة:"
+                      : "The Right Answer: "
+                  }}
+                  <span v-if="child.child.modelAnswer">
+                    {{ $i18n.locale == "ar" ? "صح" : "True" }}
+                  </span>
+                  <span v-else>
+                    {{ $i18n.locale == "ar" ? "خطأ" : "False" }}
+                  </span>
                 </h6>
               </div>
               <div class="row">
@@ -464,11 +526,10 @@
             class="choose container-fluid p-0"
             v-else-if="child.child.type == 'choose'"
           >
-
-          <div class="showQuestionMark" >
-          <span> {{$i18n.locale == 'ar' ? 'الدرجة:' : 'Degree: '}} </span> {{child.mark}} / {{child.point}}
-        </div>
-
+            <div class="showQuestionMark">
+              <span> {{ $i18n.locale == "ar" ? "الدرجة:" : "Degree: " }} </span>
+              {{ child.mark }} / {{ child.point }}
+            </div>
 
             <p class="orangeColor">{{ child.child.head }}</p>
             <div class="row">
@@ -527,6 +588,27 @@
         </section>
       </div>
 
+      <p class="orangeColor" v-if="!showModelAnswer && question.question.type != 'truefalse' && question.question.type != 'choose' && question.question.type != 'group'">
+        {{
+          $i18n.locale == "ar"
+            ? "إرفاق صورة بالحل"
+            : "Attach Your Image Solution"
+        }}
+      </p>
+      <div class="uploader" v-if="!showModelAnswer && question.question.type != 'truefalse' && question.question.type != 'choose' && question.question.type != 'group'">
+        <input type="file" @change="setPhotoAnswer" name="" id="" />
+        <div v-if="url">
+          <img :src="url" style="max-width: 100%; max-height: 100%" alt="">
+        </div>
+        <div v-else>
+          <i class="fas fa-upload"></i>
+        </div>
+      </div>
+
+
+      
+     
+
       <!-- End Of Group Question -->
     </div>
   </div>
@@ -546,13 +628,23 @@ export default {
       answerQu: "",
       selectedExam: null,
       active_choose: null,
+      fileList: [],
+      url: "",
     };
   },
-  created() {},
+
   computed: {
     picked() {
       return this.questions && this.questions.length > 0 && question.answer;
     },
+  },
+  mounted(){
+    
+    if(this.question.answerImage && typeof this.question.answerImage == 'object'){
+      this.url = URL.createObjectURL(this.question.answerImage)
+    }else{
+      this.url = this.question.answerImage;
+    }
   },
   watch: {
     picked() {
@@ -560,10 +652,33 @@ export default {
     },
   },
   methods: {
+    setPhotoAnswer(e){
+      if(e.target.files.length > 0){
+        this.question.answerImage = e.target.files[0];
+        this.url = URL.createObjectURL(this.question.answerImage);
+        if(this.question.question.type == 'choose'){
+          this.postSolution(this.question.answer >= 0 ? this.question.answer : '');
+        }else{
+          this.postSolution()
+        }
+      }
+    },
+    handleRemove() {
+      console.log("hi");
+      this.question.answerImage = null;
+      this.postSolution();
+    },
+
+    handlePictureCardPreview(file) {
+      console.log("hi");
+      this.question.answerImage = file.raw;
+    },
+
     postSolution(answer = "") {
       if (this.question && !this.question.question) {
         return;
       }
+
       if (answer >= 0) {
         this.question.question.active = answer;
       }
@@ -573,9 +688,11 @@ export default {
       formData.append("question", this.question.question.id);
       if (this.question && this.question.question.type == "choose") {
         formData.append("answer", answer);
+        this.question.answer = answer;
       } else if (
         (this.question && this.question.question.type == "paragraph") ||
-        this.question.question.type == "truefalse" || this.question.question.type == "voice"
+        this.question.question.type == "truefalse" ||
+        this.question.question.type == "voice"
       ) {
         formData.append("answer", this.question.answer);
       } else if (this.question && this.question.question.type == "complete") {
@@ -583,6 +700,10 @@ export default {
           if (this.question.answer[i])
             formData.append(`answer[${i}]`, this.question.answer[i]);
         }
+      }
+
+      if (this.question.answerImage) {
+        formData.append("answerImage", this.question.answerImage);
       }
 
       if (this.exam.id) {
@@ -611,7 +732,8 @@ export default {
         formData.append("answer", answer);
       } else if (
         (child && child.child.type == "paragraph") ||
-        child.child.type == "truefalse" || child.child.type == "voice"
+        child.child.type == "truefalse" ||
+        child.child.type == "voice"
       ) {
         formData.append("answer", child.answer);
       } else if (child && child.child.type == "complete") {
@@ -679,6 +801,9 @@ export default {
 }
 
 .question {
+  .el-upload.el-upload--picture-card {
+    text-align: center !important;
+  }
   .right_answer.answer {
     background-color: #f6fdfa !important;
     .index {
@@ -696,11 +821,45 @@ export default {
     }
   }
 
-  .showQuestionMark{
+  .showQuestionMark {
     text-align: end;
-    span{
-      color: #F28227 !important;
+    span {
+      color: #f28227 !important;
       font-size: 18px !important;
+    }
+  }
+}
+
+.uploader {
+  position: relative;
+  height: 172px;
+  width: 173px;
+  border: 1px dashed #f8b257a1;
+  border-radius: 10px;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+      color: #f8b257a1;
     }
   }
 }

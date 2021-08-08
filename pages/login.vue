@@ -182,7 +182,7 @@ export default {
           response.data.user &&
           response.data.user.role == "student"
         ) {
-          this.$router.push(`/Material/material`);
+          this.$router.push(`/subjects`);
         } else if (
           response.data &&
           response.data.user &&

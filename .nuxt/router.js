@@ -5,13 +5,14 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _42c116f4 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
+const _45f62ff0 = () => interopDefault(import('..\\pages\\Material\\index.vue' /* webpackChunkName: "pages/Material/index" */))
 const _71e98abc = () => interopDefault(import('..\\pages\\parentProfile.vue' /* webpackChunkName: "pages/parentProfile" */))
 const _a07d7cf4 = () => interopDefault(import('..\\pages\\profile.vue' /* webpackChunkName: "pages/profile" */))
+const _ec4a9ef0 = () => interopDefault(import('..\\pages\\subjects\\index.vue' /* webpackChunkName: "pages/subjects/index" */))
 const _353cfc17 = () => interopDefault(import('..\\pages\\Tasks\\index.vue' /* webpackChunkName: "pages/Tasks/index" */))
 const _e85371c8 = () => interopDefault(import('..\\pages\\Auth\\changePass.vue' /* webpackChunkName: "pages/Auth/changePass" */))
 const _417bd168 = () => interopDefault(import('..\\pages\\Auth\\code.vue' /* webpackChunkName: "pages/Auth/code" */))
 const _5091dfee = () => interopDefault(import('..\\pages\\Auth\\sendEmail.vue' /* webpackChunkName: "pages/Auth/sendEmail" */))
-const _a1d9cc3e = () => interopDefault(import('..\\pages\\Material\\material.vue' /* webpackChunkName: "pages/Material/material" */))
 const _3e02740e = () => interopDefault(import('..\\pages\\Parent\\student.vue' /* webpackChunkName: "pages/Parent/student" */))
 const _58bff440 = () => interopDefault(import('..\\pages\\Material\\content\\course\\_id.vue' /* webpackChunkName: "pages/Material/content/course/_id" */))
 const _174ac869 = () => interopDefault(import('..\\pages\\Material\\content\\unitExam\\_unit\\_id.vue' /* webpackChunkName: "pages/Material/content/unitExam/_unit/_id" */))
@@ -21,6 +22,8 @@ const _0e0008d4 = () => interopDefault(import('..\\pages\\Parent\\Result\\_id\\_
 const _77d9e3ec = () => interopDefault(import('..\\pages\\Parent\\Subjects\\_id\\_section.vue' /* webpackChunkName: "pages/Parent/Subjects/_id/_section" */))
 const _43552a4f = () => interopDefault(import('..\\pages\\Parent\\tasks\\_id\\_section.vue' /* webpackChunkName: "pages/Parent/tasks/_id/_section" */))
 const _5d1e5b18 = () => interopDefault(import('..\\pages\\exam\\_id.vue' /* webpackChunkName: "pages/exam/_id" */))
+const _2195e6c3 = () => interopDefault(import('..\\pages\\lesson\\_id\\index.vue' /* webpackChunkName: "pages/lesson/_id/index" */))
+const _67829cdc = () => interopDefault(import('..\\pages\\subjects\\_id\\index.vue' /* webpackChunkName: "pages/subjects/_id/index" */))
 const _14f7d16f = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -39,6 +42,10 @@ export const routerOptions = {
     component: _42c116f4,
     name: "login"
   }, {
+    path: "/Material",
+    component: _45f62ff0,
+    name: "Material"
+  }, {
     path: "/parentProfile",
     component: _71e98abc,
     name: "parentProfile"
@@ -46,6 +53,10 @@ export const routerOptions = {
     path: "/profile",
     component: _a07d7cf4,
     name: "profile"
+  }, {
+    path: "/subjects",
+    component: _ec4a9ef0,
+    name: "subjects"
   }, {
     path: "/Tasks",
     component: _353cfc17,
@@ -62,10 +73,6 @@ export const routerOptions = {
     path: "/Auth/sendEmail",
     component: _5091dfee,
     name: "Auth-sendEmail"
-  }, {
-    path: "/Material/material",
-    component: _a1d9cc3e,
-    name: "Material-material"
   }, {
     path: "/Parent/student",
     component: _3e02740e,
@@ -102,6 +109,14 @@ export const routerOptions = {
     path: "/exam/:id?",
     component: _5d1e5b18,
     name: "exam-id"
+  }, {
+    path: "/lesson/:id",
+    component: _2195e6c3,
+    name: "lesson-id"
+  }, {
+    path: "/subjects/:id",
+    component: _67829cdc,
+    name: "subjects-id"
   }, {
     path: "/",
     component: _14f7d16f,

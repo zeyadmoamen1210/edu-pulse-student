@@ -435,7 +435,7 @@
 
         .largeScreen {
             @media screen and (max-width:701px) {
-                display: none;
+                // display: none;
             }
 
         }
@@ -762,7 +762,16 @@
                             justify-content: center;
 
                             p {
-                                text-align: center;
+                                text-align: center !important;
+                                margin-bottom: 6px !important;
+
+                                &:first-of-type{
+                                    font-size: 30px;
+                                }
+
+                                &:nth-of-type(2){
+                                    font-size: 27px;
+                                }
 
                                 &.note {
                                     color: rgba($color: $textColor, $alpha: 0.30);
@@ -781,6 +790,9 @@
                                     text-decoration: underline;
                                     color: $textColor;
                                     font-size: 14px;
+                                    cursor: pointer;
+                                    text-align: center !important;
+                                    display: block;
                                 }
                             }
 

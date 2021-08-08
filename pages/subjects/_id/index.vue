@@ -69,7 +69,7 @@
                             v-for="(Lesson, i) in Lessons"
                             :key="Lesson.id"
                             @click="
-                              goTo(Lesson.id, 'Material-content-course-id')
+                              $router.push(`/lesson/${Lesson.id}`)
                             "
                           >
                             <span v-if="$i18n.locale == 'ar'" class="pointer"

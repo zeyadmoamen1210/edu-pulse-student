@@ -17,7 +17,9 @@
             <p v-if="$i18n.locale == 'en'">
               {{ subject.nameEn }}
             </p>
+            
           </h3>
+          
           <div ref="target" id="target" class="center exam">
             <div class="row">
               <div class="col-lg-7 col-md-12 p-0 mb-3">
@@ -26,7 +28,11 @@
               <div
                 class="col-lg-5 col-md-12 d-flex mb-3 justify-content-end p-0"
               >
-                <p class="text">{{ exam.title }}</p>
+                <p class="text d-block">{{ exam.title }}</p>
+                
+              </div>
+              <div class="d-flex" style="justify-content: flex-end;">
+                <vs-button @click="$router.go(-1)"> {{$i18n.locale == 'ar' ? 'العودة الي الامتحانات' : 'Back To Exams' }} </vs-button>
               </div>
             </div>
 
@@ -106,7 +112,9 @@
                       )
                       &&
                       !repeatTheExam
+                      
                     "
+                    
                     class="col-md-1"
                     :class="[$i18n.locale === 'en' ? '' : '']"
                   >
@@ -133,8 +141,11 @@
                           @click="showModelAnswer = false"
                           >  {{$i18n.locale == 'ar' ? 'عرض نتيجة الامتحان' : 'Show Your Mark'}} </vs-button
                         >
-                        <div v-if="questions.length > 0 && !teacherWillCorrectIt && !repeatTheExam">
-                          <Question
+                        <div v-if="!teacherWillCorrectIt && !repeatTheExam">
+
+                          <div v-if="questions.length > 0">
+                            <Question
+                            ref="question"
                             :question="questions[currentIndex]"
                             :showModelAnswer="isCorrected && showModelAnswer"
                             :exam="exam"
@@ -142,10 +153,12 @@
                           />
 
                           <Question
+                            ref="question"
                             :question="questions[currentIndex]"
                             :showModelAnswer="isCorrected && showModelAnswer"
                             :exam="exam"
-                            v-else-if="!exam.totalMarks"
+                            
+                            v-else-if="!exam.totalMarks && exam.totalMarks !== 0 && showQuestions"
                           />
 
                           <div class="absolute" v-if="!isCorrected">
@@ -198,10 +211,21 @@
                               </div>
                             </div>
                           </div>
+                          </div>
+                          <div v-else-if="exam.id && !notAllowedToSeeExam && questions.length == 0">
+                          <div class="text-center">
+                            <img style="max-width: 400px;" src="@/assets/imgs/Questions-cuate.svg" alt="">
+                          </div>
+                          <h6 class="text-center mt-3" style="font-size: 20px;">{{ $t("auth.NoQuestionInExam") }}</h6>
+                        </div>
+                          
                         </div>
 
                         <div v-else-if="teacherWillCorrectIt && !repeatTheExam">
-                          {{ $t("auth.isCheckingByTeacher") }}
+                          <div class="text-center">
+                            <img style="max-width: 400px;" src="@/assets/imgs/Mathematics-bro.svg" alt="">
+                          </div>
+                          <h6 class="text-center" style="font-size: 20px;">{{ $t("auth.isCheckingByTeacher") }}</h6>
                         </div>
 
                         <div v-if="isCorrected && !showModelAnswer && !repeatTheExam">
@@ -215,7 +239,7 @@
                                     </p>
                                     <p>{{ allMarks }}/{{ allPoints }}</p>
                                     <div class="row">
-                                      <div class="col-md-3">
+                                      <div class="col-md-12">
                                         <p class="num">
                                           {{
                                             `${(
@@ -225,7 +249,10 @@
                                           }}
                                         </p>
                                       </div>
-                                      <div class="col-md-9">
+                                      <div v-if="allMarks < ((allPoints * exam.passing_percentage) / 100)">
+                                        <h6 class="text-center">  {{$t('auth.NotPassed')}} </h6>
+                                      </div>
+                                      <div class="col-md-12 mb-2">
                                         <b-progress
                                           :value="exam.totalMarks"
                                           :max="exam.points"
@@ -233,15 +260,12 @@
                                         ></b-progress>
                                       </div>
                                     </div>
-                                    <div v-if="allMarks < allPoints / 2">
-                                      <p class="note">
-                                        {{ $t("auth.ExamNote") }}
-                                      </p>
-                                      <button class="btn" @click="startExam()">
-                                        {{ $t("auth.RepeatExam") }}
-                                      </button>
+                                    <div >
+                                      
+                                      
                                     </div>
                                     <p
+
                                       class="wrongAnswer"
                                       @click="showModelAnswer = true"
                                     >
@@ -267,7 +291,7 @@
 
 
 
-                        <div v-else-if="repeatTheExam">
+                        <!-- <div v-else-if="repeatTheExam">
                           <div class="container-fluid result">
                             <div class="row">
                               <div class="col-md-6 alginItem">
@@ -278,8 +302,8 @@
                                     </p>
                                     <p>{{ allMarks }}/{{ allPoints }}</p>
                                     <div class="row">
-                                      <div class="col-md-3">
-                                        <p class="num">
+                                      <div class="col-md-12">
+                                        <p class="num" v-if="allMarks / allPoints">
                                           {{
                                             `${(
                                               (allMarks / allPoints) *
@@ -287,8 +311,11 @@
                                             ).toFixed(2)}%`
                                           }}
                                         </p>
+                                        <p class="num" v-else>
+                                          0%
+                                        </p>
                                       </div>
-                                      <div class="col-md-9">
+                                      <div class="col-md-12">
                                         <b-progress
                                           :value="exam.totalMarks"
                                           :max="exam.points"
@@ -296,9 +323,9 @@
                                         ></b-progress>
                                       </div>
                                     </div>
-                                    <div v-if="allMarks < allPoints / 2">
+                                    <div >
                                       
-                                      <button class="btn" @click="startExam()">
+                                      <button class="btn" @click="repeatExam()">
                                         {{ $t("auth.RepeatExam") }}
                                       </button>
                                     </div>
@@ -315,14 +342,17 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
 
 
 
 
                         <div v-if="notAllowedToSeeExam">
-                            <h6>{{ $t("auth.notAllowedToSolve") }}</h6>
+                          <div class="text-center">
+                            <img style="max-width: 400px;" src="@/assets/imgs/Time-management-bro.svg" alt="">
+                          </div>
+                          <h6 class="text-center" style="font-size: 20px;">{{ $t("auth.notAllowedToSolve") }}</h6>
                         </div>
                       </div>
                     </section>
@@ -368,7 +398,9 @@ export default {
       allMarks: 0,
       isCorrected: false,
       notAllowedToSeeExam: false,
-      repeatTheExam: false
+      repeatTheExam: false,
+      timeIsFinished: false,
+      showQuestions: true
     };
   },
   computed: {},
@@ -385,6 +417,31 @@ export default {
 
     },
 
+    repeatExam(){
+      this.currentIndex = 0;
+      this.failedAndAllowToRepeat = false;
+      this.isCorrected = false;
+      this.repeatTheExam = false;
+      this.showModelAnswer = false;
+      const loading = this.$vs.loading({
+        type: "scale",
+        color: "#F28227",
+      });
+      this.$axios
+        .post(`/exams/${this.$route.params.id}/start`)
+        .then((res) => {
+          
+            this.fetchExam();
+          
+          
+        })
+        .catch((error) => {
+          this.fetchExam();
+         
+        })
+        .finally(() => loading.close());
+    },
+
 
     startExam() {
       this.currentIndex = 0;
@@ -398,18 +455,18 @@ export default {
       });
       this.$axios
         .post(`/exams/${this.$route.params.id}/start`)
-        .then(() => {
-          this.fetchExam();
+        .then((res) => {
+          // if(res.data.mark >= 0){
+          //   this.repeatTheExam = true;
+          // }else{
+            this.fetchExam();
+          // }
+          
         })
         .catch((error) => {
+          this.timeIsFinished = true;
           this.fetchExam();
-          //   if (error.response.status === 403) {
-          // this.isExamCheckingNow = true;
-          // this.$message({
-          //     message: this.$i18n.locale == 'ar' ? "أمتحانك قيد التصحيح من قبل المعلم" : "Your Exam Is Checking By Your Teacher"
-          // })
-          //   }
-          //   this.fetchExam();
+         
         })
         .finally(() => loading.close());
     },
@@ -472,6 +529,7 @@ export default {
           this.exam = res.data;
           this.questions = res.data.questions || [];
 
+
           console.log(this.exam);
         })
         .catch((error) => {
@@ -530,7 +588,12 @@ export default {
         .finally(() => loading.close());
     },
     getquestion(index) {
+      this.showQuestions = false;
       this.currentIndex = index;
+      setTimeout(() => {
+        this.showQuestions = true;
+      }, 0)
+      
     },
     getNextQuestion() {
       this.currentIndex += 1;

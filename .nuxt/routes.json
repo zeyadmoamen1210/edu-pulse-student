@@ -7,6 +7,13 @@
     "_name": "_42c116f4"
   },
   {
+    "name": "Material",
+    "path": "/Material",
+    "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Material\\\\index.vue",
+    "chunkName": "pages/Material/index",
+    "_name": "_45f62ff0"
+  },
+  {
     "name": "parentProfile",
     "path": "/parentProfile",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\parentProfile.vue",
@@ -19,6 +26,13 @@
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\profile.vue",
     "chunkName": "pages/profile",
     "_name": "_a07d7cf4"
+  },
+  {
+    "name": "subjects",
+    "path": "/subjects",
+    "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\subjects\\\\index.vue",
+    "chunkName": "pages/subjects/index",
+    "_name": "_ec4a9ef0"
   },
   {
     "name": "Tasks",
@@ -47,13 +61,6 @@
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Auth\\\\sendEmail.vue",
     "chunkName": "pages/Auth/sendEmail",
     "_name": "_5091dfee"
-  },
-  {
-    "name": "Material-material",
-    "path": "/Material/material",
-    "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\Material\\\\material.vue",
-    "chunkName": "pages/Material/material",
-    "_name": "_a1d9cc3e"
   },
   {
     "name": "Parent-student",
@@ -117,6 +124,20 @@
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\exam\\\\_id.vue",
     "chunkName": "pages/exam/_id",
     "_name": "_5d1e5b18"
+  },
+  {
+    "name": "lesson-id",
+    "path": "/lesson/:id",
+    "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\lesson\\\\_id\\\\index.vue",
+    "chunkName": "pages/lesson/_id/index",
+    "_name": "_2195e6c3"
+  },
+  {
+    "name": "subjects-id",
+    "path": "/subjects/:id",
+    "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\subjects\\\\_id\\\\index.vue",
+    "chunkName": "pages/subjects/_id/index",
+    "_name": "_67829cdc"
   },
   {
     "name": "index",

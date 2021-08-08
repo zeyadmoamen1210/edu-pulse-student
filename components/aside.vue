@@ -21,7 +21,7 @@
             : '',
         ]"
       >
-        <NuxtLink to="/Material/material">
+        <NuxtLink to="/subjects">
           <span><i class="fas fa-book"></i></span>
           <p>{{ $t("auth.Material") }}</p>
         </NuxtLink>
