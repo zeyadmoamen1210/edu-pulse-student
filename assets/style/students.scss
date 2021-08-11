@@ -15,6 +15,11 @@
             padding: 20px 0px !important;
         }
 
+
+        .el-table__header, .el-table__body{
+            width: 100% !important;
+        }
+
     }
 
     .form-control:disabled,

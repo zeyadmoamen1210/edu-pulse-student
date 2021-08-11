@@ -142,7 +142,7 @@
         }
 
         .otherVideos {
-            max-height: 260px;
+            max-height: 350px;
             width: 250px;
 
             @media screen and(max-width:769px) {
@@ -274,9 +274,9 @@
                 }
             }
 
-            textarea {
-                resize: none;
-                box-shadow: none !important;
+            .el-input {
+                .el-input{
+                    box-shadow: none !important;
                 border: none !important;
                 border-bottom: 1px solid rgba($color: #707070, $alpha: 0.6) !important;
                 border-radius: 0 !important;
@@ -290,6 +290,8 @@
                     font-size: 16px;
                     color: rgba($color: $textColor, $alpha: 0.5);
                 }
+                }
+                
             }
 
             .icon {

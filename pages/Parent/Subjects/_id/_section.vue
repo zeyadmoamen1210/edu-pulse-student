@@ -25,12 +25,13 @@
                 >{{ $t("auth.Subjects") }}
               </h3>
             </div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
               <div :class="[$i18n.locale === 'ar' ? 'mr-auto' : 'ml-auto']">
                 <el-select
                   @change="changeStudent()"
                   v-model="name"
                   placeholder=""
+                  value-key="item.id"
                   :class="[$i18n.locale === 'en' ? 'arrowEng' : '']"
                 >
                   <el-option :label="student" :value="studentID"> </el-option>
@@ -43,9 +44,9 @@
                   </el-option>
                 </el-select>
               </div>
-            </div>
+            </div> -->
           </div>
-          <div class="container-fluid">
+          <div class="container-fluid" v-if="Subjects.length > 0">
             <div class="row">
               <div
                 class="col-lg-6 col-md-12 col-sm-12 mt-sm-3"
@@ -121,6 +122,18 @@
               </div>
             </div>
           </div>
+          <div v-else class="no-questions-available" style="">
+                    <div class="no-questions-container">
+                      <div class="no-files" style="">
+                        <img
+                          style="text-align: center;display: block;margin: auto;max-width: 100%"
+                          src="@/assets/imgs/Nerd-cuate.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
         </div>
       </el-main>
     </el-container>

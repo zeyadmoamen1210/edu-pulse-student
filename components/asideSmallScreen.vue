@@ -5,19 +5,11 @@
         <div class="img">
           <el-avatar :src="$auth.user.photo"></el-avatar>
         </div>
-        <span>
-          <vs-sidebar-item :class="[path().path == '/home' ? 'active' : '']">
-            <template #icon>
-              <i class="fas fa-home"></i>
-            </template>
-            {{ $t("auth.HomePage") }}
-          </vs-sidebar-item></span
-        >
-
-        <span @click="routerLink('Material/material')">
+       
+        <span @click="routerLink('subjects')">
           <vs-sidebar-item
             :class="[
-              path().path == 'Material/material' ||
+              path().path == 'subjects' ||
               path().path == 'Material/content' ||
               path().path == 'Material/course'
                 ? 'active'
@@ -73,19 +65,12 @@
         <div class="img">
           <el-avatar :src="$auth.user.photo"></el-avatar>
         </div>
-        <span>
-          <vs-sidebar-item :class="[path().path == '/home' ? 'active' : '']">
-            <template #icon>
-              <i class="fas fa-home"></i>
-            </template>
-            {{ $t("auth.HomePage") }}
-          </vs-sidebar-item></span
-        >
+       
 
-        <span @click="routerLink('/Material/material')">
+        <span @click="routerLink('/subjects')">
           <vs-sidebar-item
             :class="[
-              path().path == '/Material/material' ||
+              path().path == '/subjects' ||
               path().name == 'Material-content-id' ||
               path().name == 'Material-content-course-id'
                 ? 'active'
@@ -99,9 +84,9 @@
           </vs-sidebar-item></span
         >
 
-        <span @click="routerLink('/parentProfile')"
+        <span @click="routerLink('/profile')"
           ><vs-sidebar-item
-            :class="[path().path == '/parentProfile' ? 'active' : '']"
+            :class="[path().path == '/profile' ? 'active' : '']"
           >
             <template #icon>
               <i class="fas fa-user-circle"></i>

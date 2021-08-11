@@ -148,20 +148,41 @@ export default {
       });
     },
     async login() {
-      const loading = this.$vs.loading({
-        type: "scale",
-        color: "#F28227",
-      });
+      const loading = this.$vs.loading();
 
       try {
         let response = await this.$auth.loginWith("local", {
           data: this.loginForm,
         });
+
+        
+
         loading.close();
 
+
+
+        if(response.data.user && response.data.user.role === 'admin' || response.data.user.role === 'teacher'){
+          this.$vs.notification({
+            progress: "auto",
+            color: "#FFF3EA",
+            position: "top-center",
+            text: this.$i18n.locale == 'ar' ? 'غير مسموح لك بالدخول' : 'You Not Allow To Be Here',
+          });
+          this.$auth.logout();
+          return;
+        }
+
+        
+        localStorage.setItem(
+          "eduPulseDashboardUser",
+          JSON.stringify(response.data.user)
+        );
         this.$auth.setUser(response.data.user);
-        localStorage.setItem("userDataStudent", JSON.stringify(response.data.user));
-        // localStorage.setItem("token", res.data.token);
+
+        // this.$message({
+        //   message: `Welcome Back ${response.data.user.username}`,
+        //   type: "success",
+        // });
         if (this.$i18n.locale === "en") {
           this.$vs.notification({
             progress: "auto",
@@ -171,32 +192,47 @@ export default {
           });
         } else {
           this.$vs.notification({
-            progress: "auto",
             color: "#FFF3EA",
             position: "top-center",
             text: ` ${response.data.user.username} اهلا وسهلا `,
           });
         }
-        if (
-          response.data &&
-          response.data.user &&
-          response.data.user.role == "student"
-        ) {
+
+        if (response.data.user.role === "student") {
           this.$router.push(`/subjects`);
-        } else if (
-          response.data &&
-          response.data.user &&
-          response.data.user.role == "parent"
-        ) {
+        } else {
           this.$router.push(`/Parent/student`);
         }
+
         window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (err) {
         loading.close();
 
-        console.log("====error=", err);
-        this.$message.error(`Invalid Email Or Password `);
+        if(err.response.data.message.flag === 1){
+          this.$vs.notification({
+            color: "#FFF3EA",
+            position: "top-center",
+            text: this.$i18n.locale == 'ar' ? `البريد الإلكتروني غير موجود` : 'Email Is Not Exist',
+          });
+        }
+
+        else if(err.response.data.message.flag === 3){
+          this.$vs.notification({
+            color: "#FFF3EA",
+            position: "top-center",
+            text: this.$i18n.locale == 'ar' ? `كلمة المرور غير صحيحة` : 'Password Is Incorrect',
+          });
+        }
+        else if (err.response.data.message.flag === 4){
+          this.$vs.notification({
+            color: "#FFF3EA",
+            position: "top-center",
+            text: this.$i18n.locale == 'ar' ? `تم تعطيل هذا الحساب من قبل الادمن` : 'This Account Is Disabled By Admin',
+          });
+        }
+        
         window.scrollTo({ top: 0, behavior: "smooth" });
+      
       }
     },
 

@@ -5,12 +5,7 @@
         <el-avatar size="large" :src="$auth.user.photo"></el-avatar>
       </div>
       <p class="name">{{ $auth.user.username }}</p>
-      <div class="list first">
-        <NuxtLink to="">
-          <span><i class="fas fa-home"></i></span>
-          <p>{{ $t("auth.HomePage") }}</p>
-        </NuxtLink>
-      </div>
+   
       <div
         class="list"
         :class="[
@@ -28,9 +23,9 @@
       </div>
       <div
         class="list"
-        :class="[path().path == '/parentProfile' ? 'active' : '']"
+        :class="[path().path == '/profile' ? 'active' : '']"
       >
-        <NuxtLink to="/parentProfile">
+        <NuxtLink to="/profile">
           <span><i class="fas fa-user-circle"></i></span>
           <p>{{ $t("auth.Profile") }}</p>
         </NuxtLink>

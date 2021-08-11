@@ -48,7 +48,7 @@
             </div>
           </div>
 
-          <div class="conatiner-fluid p-0">
+          <div class="conatiner-fluid p-0" v-if="tasks.length > 0">
             <div class="row mt-4" v-for="(item, index) in tasks" :key="index">
               <div class="col-md-12 bg-gray">
                 <div class="boder"></div>
@@ -93,6 +93,17 @@
               </el-collapse>
             </div>
           </div>
+          <div v-else class="no-questions-available" style="">
+                  <div class="no-questions-container">
+                    <div class="no-files" style="">
+                      <img
+                      style="text-align: center;display: block;margin: auto;max-width: 100%"
+                        src="@/assets/imgs/Nerd-cuate.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
         </div>
       </el-main>
     </el-container>

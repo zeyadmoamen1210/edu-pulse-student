@@ -15,7 +15,7 @@
               <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                 <div class="text">
                   <div class="profileImg">
-                    <el-avatar size="large" :src="userInfo.img"></el-avatar>
+                    <el-avatar size="large" :src="url"></el-avatar>
                     <label for="myimg" class="update">
                       <div>
                         <p>{{ $t("auth.Update") }}</p>
@@ -36,25 +36,28 @@
               <div class="col-xl-9 col-lg-9">
                 <div class="row form">
                   <div class="col-md-4">
-                    <label for="firstName">{{ $t("auth.FirstName") }} </label>
+                    <label for="firstName">{{ $t("auth.username") }} </label>
                     <input
                       id="firstName"
                       type="text"
                       class="form-control"
-                      disabled
-                      v-model="userInfo.firstName"
+                      
+                      v-model="userInfo.username"
                     />
                   </div>
+
                   <div class="col-md-4">
-                    <label for="firstName">{{ $t("auth.LastName") }} </label>
+                    <label for="bio">{{ $t("auth.bio") }} </label>
                     <input
-                      id="firstName "
+                      id="bio"
                       type="text"
                       class="form-control"
-                      disabled
-                      v-model="userInfo.secondName"
+                      
+                      v-model="userInfo.bio"
                     />
                   </div>
+
+                  
                   <div class="col-md-4 align" v-if="!show">
                     <button class="btn btn-orange" @click="updateProfile">
                       {{ $t("auth.SaveButton") }}
@@ -71,7 +74,7 @@
                       id="email "
                       type="email"
                       class="form-control"
-                      disabled
+                      
                       v-model="userInfo.email"
                     />
                   </div>
@@ -159,15 +162,8 @@ export default {
     },
   },
   created() {
-    if (this.$auth.loggedIn && Object.keys(this.$auth.user).length == 0) {
       this.getMe();
-    }
-    if (Object.keys(this.$auth.user).length != 0) {
-      this.userInfo.img = this.$auth.user.photo;
-      this.userInfo.firstName = this.$auth.user.username.split(" ")[0];
-      this.userInfo.secondName = this.$auth.user.username.split(" ")[1];
-      this.userInfo.email = this.$auth.user.email;
-    }
+    
   },
   mounted() {},
   data() {
@@ -181,6 +177,9 @@ export default {
         email: "",
         img: null,
       },
+
+      url: "",
+      photo: "",
 
       show: false,
       img: null,
@@ -196,21 +195,28 @@ export default {
         // this.user = res.data;
         this.$auth.setUser(res.data);
         this.userInfo.img = res.data.photo;
-        this.userInfo.firstName = res.data.username.split(" ")[0];
-        this.userInfo.secondName = res.data.username.split(" ")[1];
+        this.url = res.data.photo;
+        this.photo = res.data.photo;
+        this.userInfo.username = res.data.username;
+        this.userInfo.bio = res.data.bio;
+
         this.userInfo.email = res.data.email;
         console.log("user===hello", Object.keys(this.$auth.user));
       });
     },
     onFileChange(e) {
-      this.img = e.target.files[0];
-      this.userInfo.img = URL.createObjectURL(this.img);
+      this.photo = e.target.files[0];
+      this.url = URL.createObjectURL(this.photo);
     },
     updateProfile() {
       let formData = new FormData();
-      formData.append("photo", this.img);
-      this.fullName = this.userInfo.firstName + " " + this.userInfo.secondName;
-      formData.append("bio", "THIS IS STUDENT");
+      if(this.photo){
+        formData.append("photo", this.photo);
+      }
+      formData.append("email", this.userInfo.email);
+
+      formData.append("bio",this.userInfo.bio);
+      formData.append("username", this.userInfo.username);
 
       // const common = {
       //   Accept: "application/json",
@@ -224,6 +230,8 @@ export default {
         .patch("/profile", formData)
         .then((res) => {
           console.log(res);
+
+          
         })
         .catch((err) => {
           console.log(err);
@@ -231,6 +239,46 @@ export default {
         .finally(() => loading.close());
     },
     updatePass() {
+
+      if(!this.userInfo.password){
+        this.$vs.notification({
+              progress: "auto",
+              color: "#FFF3EA",
+              position: "top-right",
+              text: this.$i18n.locale == 'ar' ? 'كلمة المرور القديمة مطلوبة' : 'Old Password Is Required',
+        });
+
+        return;
+      }
+
+      if(!this.userInfo.newPassword){
+          this.$vs.notification({
+              progress: "auto",
+              color: "#FFF3EA",
+              position: "top-right",
+              text: this.$i18n.locale == 'ar' ? 'كلمة المرور الجديد مطلوبة' : 'New Password Is Required',
+        });
+      }
+
+
+      if(!this.userInfo.verify){
+          this.$vs.notification({
+              progress: "auto",
+              color: "#FFF3EA",
+              position: "top-right",
+              text: this.$i18n.locale == 'ar' ? 'تأكيد كلمة المرور مطلوبة' : 'Verify Old Password Is Required',
+        });
+      }
+
+      if(!(this.userInfo.password && this.userInfo.newPassword && this.userInfo.verify && (this.userInfo.verify === this.userInfo.password))){
+        this.$vs.notification({
+              progress: "auto",
+              color: "#FFF3EA",
+              position: "top-right",
+              text: this.$i18n.locale == 'ar' ? 'كلمة المرور القديمة و تأكيدها غير متطابقين' : 'Verify Password and Old Password Not Identical',
+        });
+        return;
+      }
       const loading = this.$vs.loading({
         type: "scale",
         color: "#F28227",
@@ -241,6 +289,11 @@ export default {
           newpassword: this.userInfo.newPassword,
         })
         .then(() => {
+
+          this.userInfo.password = this.userInfo.newPassword = this.userInfo.verify = "";
+          this.show = false;
+
+          
           if (this.$i18n.locale === "en") {
             this.$vs.notification({
               progress: "auto",
@@ -248,6 +301,10 @@ export default {
               position: "top-right",
               text: `Password is Updated`,
             });
+
+            
+
+
           } else {
             this.$vs.notification({
               progress: "auto",

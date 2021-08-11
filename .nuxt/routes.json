@@ -21,6 +21,13 @@
     "_name": "_71e98abc"
   },
   {
+    "name": "presentation",
+    "path": "/presentation",
+    "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\presentation\\\\index.vue",
+    "chunkName": "pages/presentation/index",
+    "_name": "_321c1456"
+  },
+  {
     "name": "profile",
     "path": "/profile",
     "component": "D:\\\\hamza-gitlab\\\\edu-pulse\\\\student-app\\\\student-app\\\\pages\\\\profile.vue",

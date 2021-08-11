@@ -165,12 +165,7 @@ export default {
       });
     },
     goTo(id) {
-      this.$router.push({
-        name: "Material-content-course-id",
-        params: {
-          id: id,
-        },
-      });
+      this.$router.push(`/lesson/${id}`);
     },
   },
 };

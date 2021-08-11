@@ -13,7 +13,7 @@
           <h3>
             <span><i class="fas fa-tasks"></i></span>{{ $t("auth.Tasks") }}
           </h3>
-          <div class="conatiner-fluid p-0">
+          <div class="conatiner-fluid p-0" v-if="tasks.length > 0">
             <div class="row mt-4" v-for="(item, index) in tasks" :key="index">
               <div class="col-md-12 bg-gray">
                 <div class="boder"></div>
@@ -46,7 +46,7 @@
                       </p>
                       <p>أ/ {{ task.addedBy.username }}</p>
                     </div>
-                    <p class="show">عرض التفاصيل</p>
+                    <p class="show" style="    font-size: 16px;padding-top: 5px;">عرض التفاصيل</p>
                   </template>
                   <div class="details">
                     <p>
@@ -57,7 +57,23 @@
                 </el-collapse-item>
               </el-collapse>
             </div>
+            
+            
+
           </div>
+
+          <div v-else class="no-questions-available" style="">
+                  <div class="no-questions-container">
+                    <div class="no-files" style="">
+                      <img
+                      style="text-align: center;display: block;margin: auto;max-width: 100%"
+                        src="@/assets/imgs/Nerd-cuate.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+
         </div>
       </el-main>
     </el-container>
@@ -73,6 +89,7 @@ export default {
     Aside,
     SmallAside,
   },
+  middleware:['auth'],
   computed: {
     isArabic() {
       return this.$store.state.lang == "ar";

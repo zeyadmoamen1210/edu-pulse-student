@@ -39,6 +39,8 @@ export default {
     '@/plugins/fontawesome.js',
     '@/plugins/aos.client.js',
     '@/plugins/countdown.js',
+    '@/plugins/reveal.js',
+
 
 
 
@@ -72,7 +74,13 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    // Simple usage
+    '@nuxtjs/moment',
+
+  
+ 
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -113,6 +121,10 @@ export default {
     },
   },
 
+  build:{
+    transpile:['reveal']
+  },
+
 
   i18n: {
 
@@ -122,6 +134,10 @@ export default {
       messages: {
         en: {
           auth: {
+            "save": "Save",
+            "AreYouSure": "Are You Sure",
+            "delete": "Delete",
+            "close": "Close",
             "notAllowedToSolve":"This Exam Time Is Finished",
             "examPoints": "Your Mark",
             "Login": "Login",
@@ -129,6 +145,7 @@ export default {
             "Password": "Password",
             "RememberMe": "Remember  Me",
             "UserName": "User Name",
+            "bio": "Who You Are",
             "UserNamePlaceholder": "Enter your User Name",
             "ForgetPassword": "Forget Password",
             "ValidateEmail2": "Invalid Email",
@@ -148,7 +165,7 @@ export default {
             "Reset": "Reset the password ",
             "ResetNote": "Please enter the new password, which should not be less than 6 digits",
             "error": " Passwords Must be same",
-            "FirstName": "First Name",
+            "username": "User Name",
             "LastName": "Last Name",
             "Email": "Email",
             "ProfileImg": "Personal Picture",
@@ -216,6 +233,10 @@ export default {
         },
         ar: {
           auth: {
+            "AreYouSure": "هل أنت متأكد",
+            "delete": "حذف",
+            "save": "حفظ",
+            "close": "إلغاء",
             "NoQuestionInExam": "لا توجد أسئلة في الامتحان",
             'NotPassed': 'لم تتجاوز النسبة المطلوبة للامتحان',
             "notAllowedToSolve":"انتهي وقت هذا الامتحان",
@@ -244,14 +265,15 @@ export default {
             "Reset": "اعادة تعين كلمة المرور ",
             "ResetNote": "من فضلك ادخل كلمة المرور الجديدة  بحيث لا تقل عن 6 ارقام ",
             "error": "يجب ان تتطابق كلمه المرور",
-            "FirstName": "الاسم الأول ",
+            "username": "الاسم  ",
+            "bio": "نبذة عنك",
             "LastName": "الاسم الاخير",
             "Email": "الايميل ",
             "ProfileImg": "الصورة الشخصية",
             "ChangePassword": "تغيير كلمة المرور",
             "CurrentPassword": "الحالية",
             "NewPassword": "الجديدة",
-            "ConfirmPassword": "Confirm Password",
+            "ConfirmPassword": "تأكيد كلمة المرور",
             "SaveButton": "حفظ",
             "Cancel": "الغاء",
             "Information": "المعلومات الأساسية ",
@@ -316,3 +338,4 @@ export default {
 //     transpile: [/^element-ui/],
 //   }
 // }
+
